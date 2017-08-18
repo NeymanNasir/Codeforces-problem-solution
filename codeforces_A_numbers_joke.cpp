@@ -1,0 +1,12 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+int main()
+{
+    int n;
+    int smith_num[30]={4,22,27,58,85,94,121,166,202,265,274,319,346,
+    355,378,382,391,438,454,483,517,526,535,562,576,588,627,634,636,645};
+    scanf("%d",&n);
+    printf("%d\n",smith_num[n-1]);
+    return 0;
+}
