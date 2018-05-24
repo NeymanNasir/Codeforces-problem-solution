@@ -1,0 +1,36 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+    int x, y, hh, mm, cnt = 0;
+    cin >> x;
+    cin >> hh >> mm;
+
+    if(hh == 07 || hh == 17 || mm == 07 || mm == 17|| mm == 27 || mm == 37 || mm == 47 || mm == 57)
+    {
+        cout << cnt << endl;
+        return 0;
+    }
+    else
+    {
+        while(1)
+        {
+            mm -= x;
+            if(mm < 0)
+            {
+                hh -= 1;
+                if(hh < 0) hh = 24+hh;
+                mm = 60+mm;
+            }
+            cnt++;
+            if(hh == 07 || hh == 17 || mm == 07 || mm == 17|| mm == 27 || mm == 37 || mm == 47 || mm == 57)
+            {
+                cout << cnt << endl;
+                return 0;
+            }
+        }
+    }
+    return 0;
+}
