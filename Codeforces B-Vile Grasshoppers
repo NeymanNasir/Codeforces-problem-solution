@@ -1,0 +1,32 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+#define LL long long int
+int main()
+{
+    LL x, p, y, ans = -1, i;
+    cin >> p >> y;
+
+    for(x = y; x > p; x--)
+    {
+        bool flg = 1;
+        for(i = 2; i*i<=x && i<=p; i++)
+        {
+            if(x % i == 0)
+            {
+                flg = 0;
+                break;
+            }
+        }
+        if(flg == 1)
+        {
+            cout << x << endl;
+            return 0;
+        }
+    }
+
+    cout << ans << endl;
+
+    return 0;
+}
