@@ -1,0 +1,16 @@
+#include<iostream>
+#include<cstdio>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+    int a, b, x, n;
+    cin >> a >> b;
+    x = abs(b-a);
+    n = x/2;
+    int tiredness = (n*(n+1)) + (x%2*(n+1));
+
+    cout << tiredness << endl;
+    return 0;
+}
