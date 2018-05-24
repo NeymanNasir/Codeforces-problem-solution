@@ -1,0 +1,28 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+    int k, n, s, p;
+    long long t_s;
+    cin >> k >> n >> s >> p;
+
+    if(n/s == 0) t_s = 1;
+    else
+    {
+        t_s = n/s;
+        if(n%s > 0) t_s += 1;
+    }
+
+    int x = k*t_s, ans;
+    if(x / p == 0) ans = 1;
+    else
+    {
+        ans = x/p;
+        if(x%p > 0) ans+= 1;
+    }
+
+    cout << ans << endl;
+    return 0;
+}
