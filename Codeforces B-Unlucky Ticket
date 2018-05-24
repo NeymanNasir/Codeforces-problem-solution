@@ -1,28 +1,37 @@
 #include<iostream>
 #include<cstdio>
+#include<cstring>
+#include<vector>
 #include<algorithm>
 using namespace std;
 
 int main()
 {
-    int n, ara[101], i, total = 0;
+    int n, low = 0, high = 0, i, n2;
+    string digits;
     cin >> n;
+    cin >> digits;
+    int first_half[100], second_half[100];
+    int j = n;
     for(i = 0; i < n; i++)
     {
-        cin >> ara[i];
-        total += ara[i];
+        first_half[i] = digits[i]-'0';
+        second_half[i] = digits[j++]-'0';
     }
-    sort(ara, ara+n);
 
-    int my_coin = 0, x = 0;
-    for(i = n-1; i >= 0; i--)
+    sort(first_half, first_half+n);
+    sort(second_half, second_half+n);
+
+    for(i = 0; i < n; i++)
     {
-        x += ara[i];
-        total -= ara[i];
-        my_coin++;
-        if(x > total) break;
+        if(first_half[i] > second_half[i]) high++;
+        if(first_half[i] < second_half[i]) low++;
     }
-    cout << my_coin << endl;
+
+    if(low == n || high == n)
+        printf("YES\n");
+    else
+        printf("NO\n");
 
     return 0;
 }
