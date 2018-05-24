@@ -1,0 +1,52 @@
+#include<bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+
+vector<ll> V;
+map<ll, int> M;
+void pre_calculate()///collecting required all x and eliminating perfect squares
+{
+    ll lim = 1e18;
+    for(ll i = 2; i <= 1e6; i++)
+    {
+        ll x=i, sq = sqrt(x);
+        if(sq*sq == i) continue;
+        for(ll j = 2; x <= lim/i; j++)
+        {
+            x*=i;
+            if(j%2 && (M.find(x)==M.end()))
+                V.push_back(x), M[x]=1;
+        }
+    }
+    sort(V.begin(), V.end());
+}
+
+ll per_square(ll x) ///using binary search
+{
+    ll l = 0, r = 1e9+1;
+    while(l < r-1)
+    {
+        ll m = (l+r)/2;
+        if(m*m > x) r = m;
+        else l = m;
+    }
+    return l;
+}
+
+int main()
+{
+    pre_calculate();
+    int Q;
+    ll L, R;
+    cin >> Q;
+    while(Q--)
+    {
+        cin >> L >> R;
+        ll ans = (upper_bound(V.begin(), V.end(), R) - lower_bound(V.begin(), V.end(), L));
+        ans += per_square(R) - per_square(L-1);
+
+        cout << ans << endl;
+    }
+
+    return 0;
+}
