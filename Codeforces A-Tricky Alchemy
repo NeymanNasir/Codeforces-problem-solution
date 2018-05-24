@@ -1,0 +1,21 @@
+#include<iostream>
+#include<cstdio>
+#include<cstdlib>
+using namespace std;
+
+int main()
+{
+    long long int A, B, x, y, z, needs = 0;
+    cin >> A >> B;
+    cin >> x >> y >> z;
+
+    A = A - (x*2 + y);
+    B = B - (y + z*3);
+
+    if(A < 0) needs += abs(A);
+    if(B < 0) needs += abs(B);
+
+    cout << needs << endl;
+
+    return 0;
+}
