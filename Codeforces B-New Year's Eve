@@ -1,0 +1,25 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+    long long n, k, bits, x;
+    cin >> n >> k;
+
+    if(k == 1)
+    {
+        cout << n << endl;
+        return 0;
+    }
+    for(bits = 0; n >> bits; bits++);
+    x = 1;
+    while(bits)
+    {
+        x *= 2;
+        bits--;
+    }
+
+    cout << x-1 << endl;
+    return 0;
+}
