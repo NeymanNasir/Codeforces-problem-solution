@@ -1,0 +1,27 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+    int l, r, a;
+    cin >> l >> r >> a ;
+    if(l < r)
+    {
+        if(a >= r-l) a -= r-l, l = r + a/2, r += a/2;
+        else l += a, r = l;
+    }
+    else if(r < l)
+    {
+        if(a >= l-r) a -= l-r, r = l + a/2, l += a/2;
+        else r += a, l = r;
+    }
+    else
+    {
+        l += a/2, r += a/2;
+    }
+    int ans  = l+r;
+    cout << ans << endl;
+
+    return 0;
+}
