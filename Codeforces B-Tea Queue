@@ -1,0 +1,47 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+    int t;
+    cin >> t;
+    while(t--)
+    {
+        int n;
+        cin >> n;
+        int l, r, li[n], ri[n];
+        for(int i = 0; i < n; i++)
+            cin >> li[i] >> ri[i];
+
+        printf("%d", li[0]);
+        int x = li[0];
+        int second = li[0];
+        for(int i = 1; i < n; i++)
+        {
+            if(li[i] == x)
+            {
+                if(ri[i] <= second) printf(" 0");
+                else printf(" %d", ++second);
+            }
+            else
+            {
+                if(li[i]<= second)
+                {
+                    x = li[i];
+                    if(ri[i] > second) printf(" %d", ++second);
+                    else printf(" 0");
+                }
+                else
+                {
+                    printf(" %d", li[i]);
+                    x = li[i];
+                    second = li[i];
+                }
+            }
+        }
+        printf("\n");
+
+    }
+    return 0;
+}
