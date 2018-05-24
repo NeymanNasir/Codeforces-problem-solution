@@ -1,0 +1,28 @@
+#include<iostream>
+#include<cstdio>
+#include<vector>
+#include<algorithm>
+#include<cstring>
+using namespace std;
+int main()
+{
+    int n, i, x, given = 0;
+    int ara[50001];
+    cin >> n;
+    memset(ara, 0, sizeof(ara));
+    for(i = 1; i <= n; i++)
+    {
+        cin >> x;
+        ara[x] = 1;
+    }
+    for(i = 1; i <= n; i++)
+    {
+        if(ara[i] == 1) given++;
+    }
+
+    int change = n - given;
+
+    cout << change << endl;
+
+    return 0;
+}
