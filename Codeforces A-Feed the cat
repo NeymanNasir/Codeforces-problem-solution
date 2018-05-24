@@ -1,0 +1,31 @@
+#include<iostream>
+#include<cstdio>
+#include<math.h>
+using namespace std;
+
+int main()
+{
+    int hh, mm, H, D, C, N;
+    cin >> hh >> mm;
+    cin >> H >> D >> C >> N;
+
+    double xmin;
+    if(hh < 20 || (hh > 23 && mm > 59)) xmin = (20-hh)*60 - mm;
+    else xmin = 0;
+
+    double k, h;
+    h = xmin*D+H, k = C-(0.2*C);
+
+
+    //cout << h <<" " << k << endl;
+    double x1 = ceil(h/(double)N);
+    double x2 = ceil(H/(double)N);
+    double ans1 = x1*k ;
+    double ans2 = x2*C;
+
+    if(ans1<ans2) printf("%.4lf\n", ans1);
+    else printf("%.4lf\n", ans2);
+
+
+    return 0;
+}
