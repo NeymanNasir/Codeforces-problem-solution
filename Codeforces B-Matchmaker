@@ -1,0 +1,29 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int u[1010], v[1010][1010];
+
+int main()
+{
+    int n, m, close = 0, beautiful = 0, i, x, y, a, b;
+
+    cin >> n >> m;
+    for(i = 0; i < n; i++)
+    {
+        scanf("%d %d", &x, &y);
+        u[y]++, v[x][y]++;
+    }
+    for(i = 0; i < m; i++)
+    {
+        scanf("%d %d", &a, &b);
+        if(v[a][b] > 0)
+            beautiful++, v[a][b]--;
+        if(u[b] > 0)
+            close++, u[b]--;
+    }
+
+    cout << close << " " << beautiful << endl;
+
+    return 0;
+}
