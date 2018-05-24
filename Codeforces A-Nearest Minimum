@@ -1,0 +1,33 @@
+#include<iostream>
+#include<cstdio>
+#include<vector>
+#include<algorithm>
+using namespace std;
+
+int main()
+{
+    int n, ai;
+    cin >> n;
+    vector<int> ara, ara1;
+    for(int i = 0; i < n; i++)
+    {
+        cin >> ai;
+        ara.push_back(ai);
+    }
+    ara1 = ara;
+    sort(ara1.begin(), ara1.end());
+    int x = ara1[0];
+    ara1.clear();
+    for(int i = 0; i < n; i++)
+    {
+        if(x == ara[i]) ara1.push_back(i);
+    }
+
+    int dis = 1000000001;
+    for(int i = 1; i < ara1.size(); i++)
+    {
+        dis = min(dis, ara1[i]-ara1[i-1]);
+    }
+    cout << dis << endl;
+    return 0;
+}
