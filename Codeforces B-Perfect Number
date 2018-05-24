@@ -1,0 +1,33 @@
+#include<iostream>
+#include<cstdio>
+#include<vector>
+using namespace std;
+
+vector<long long int> perfect_num;
+void calculation()
+{
+    int i = 0;
+    long long int k = 19, x;
+    while(i <= 10000)
+    {
+        int sum = 0, rem;
+        x = k;
+        while(x != 0)
+        {
+            rem = x%10;
+            sum += rem;
+            x /= 10;
+        }
+        if(sum == 10) perfect_num.push_back(k), i++;
+        k++;
+    }
+}
+int main()
+{
+    calculation();
+    int k;
+    cin >> k;
+    cout << perfect_num[k-1] << endl;
+
+    return 0;
+}
