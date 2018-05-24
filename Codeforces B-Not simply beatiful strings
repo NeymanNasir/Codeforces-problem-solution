@@ -1,0 +1,49 @@
+#include<iostream>
+#include<cstdio>
+#include<vector>
+#include<string>
+using namespace std;
+
+int ara[1000];
+int main()
+{
+    string str;
+    cin >> str;
+    vector<int> V;
+    for(int i = 0; i < str.size(); i++)ara[str[i]]++;
+
+    for(int i = 97; i <=123; i++)
+    {
+        if(ara[i]>0)V.push_back(ara[i]);
+    }
+
+    //cout << V.size() << endl;
+    if(V.size()==2)
+    {
+        int cnt = 0;
+        for(int i=0; i < V.size(); i++)
+            if(V[i]>1)cnt++;
+
+        if(cnt == 2)cout <<"Yes"<< endl;
+        else cout << "No" << endl;
+    }
+    else if(V.size()==3)
+    {
+        for(int i=0; i < V.size(); i++)
+            if(V[i]>1)
+            {
+                cout << "Yes" << endl;
+                return 0;
+            }
+        cout << "No" << endl;
+    }
+    else if(V.size()==4)
+    {
+        cout <<"Yes"<<endl;
+    }
+    else
+    {
+        cout << "No" <<endl;
+    }
+    return 0;
+}
