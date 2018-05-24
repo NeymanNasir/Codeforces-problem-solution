@@ -1,0 +1,68 @@
+#include<iostream>
+#include<vector>
+#include<algorithm>
+#include<cstdio>
+#include<cmath>
+using namespace std;
+
+int main()
+{
+    int n, i, ara[4]={0,0,0,0}, car = 0, x;
+    scanf("%d", &n);
+    for(i = 0; i < n; i++)
+    {
+        cin >> x;
+        ara[x-1]++; ///number of x contains ara[x-1]
+    }
+
+    if(ara[3] > 0)
+    {
+        car += ara[3]; ///ara[3] contains number of 4 has
+        ara[3] = 0;
+    }
+
+    if(ara[2] > 0)  ///for 3
+    {
+        while(ara[0] != 0 && ara[2] != 0)
+        {
+            car++;
+            ara[0]--;
+            ara[2]--;
+        }
+        if(ara[2] > 0){
+            car += ara[2];
+            ara[2] = 0;
+        }
+    }
+
+    if(ara[1] > 0) ///for 2
+    {
+        while(ara[1] >= 2)
+        {
+            car++;
+            ara[1] -= 2;
+        }
+        while(ara[0] != 0 && ara[1] != 0)
+        {
+            car++;
+            ara[0]-=2;
+            ara[1]--;
+        }
+        if(ara[1] > 0)
+        {
+            car += ara[1];
+            ara[1] = 0;
+        }
+    }
+
+    if(ara[0] > 0) ///for ara[0] that means for 1
+    {
+        int k = ara[0]/4;
+        car += k;
+        ara[0] -= (k*4);
+        if(ara[0] > 0) car++;
+    }
+
+    cout << car << endl;
+    return 0;
+}
