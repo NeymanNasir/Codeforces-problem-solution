@@ -1,0 +1,27 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+#define LL long long int
+int main()
+{
+    LL n, k, A, B, x, coin = 0;
+    cin >> n >> k >> A >> B;
+    x = n;
+    while(x != 1)
+    {
+        if(x % k != 0) coin += x%k*A, x -= x%k;
+        else
+        {
+            if(B <= (x - x/k)*A) coin += B, x /= k;
+            else
+            {
+                coin += (x-1)*A;
+                break;
+            }
+        }
+    }
+    cout << coin << endl;
+
+    return 0;
+}
