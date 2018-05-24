@@ -1,0 +1,19 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+    int n, a, b, c, cnt = 0;
+    cin >> n;
+    for(c = 1; c <= n; c++)
+    {
+        for(b = 1; b <= c; b++)
+        {
+            a = b^c; ///then a^b^c must be equal zero
+            if(a<=b && a+b>c) cnt++;
+        }
+    }
+    cout << cnt << endl;
+    return 0;
+}
