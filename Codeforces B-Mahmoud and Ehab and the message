@@ -1,0 +1,59 @@
+#include<iostream>
+#include<cstdio>
+#include<string>
+#include<vector>
+#include<map>
+typedef long long ll;
+using namespace std;
+
+int main()
+{
+    int n, k, m, a;
+    string str;
+    vector<string> V1, V2;
+    map<string, int> M;
+    cin >> n >> k >> m;
+    for(int i = 0; i < n; i++)
+    {
+        cin >> str;
+        V1.push_back(str);
+    }
+    for(int i = 0; i < n; i++)
+    {
+        cin >> a;
+        M[V1[i]] = a;
+    }
+    for(int i = 0; i < k; i++)
+    {
+        int x, y, low = 10000000001;
+        vector<int> ara;
+        cin >> x;
+        if(x == 1) cin >> y;
+        else
+        {
+            for(int j = 0; j < x; j++)
+            {
+                cin >> y;
+                ara.push_back(y-1);
+                if(M[V1[y-1]]<low) low = M[V1[y-1]];
+            }
+                for(int j = 0; j < x; j++) M[V1[ara[j]]] = low;
+                ara.clear();
+        }
+    }
+    for(int i = 0; i < m; i++)
+    {
+        cin >> str;
+        V2.push_back(str);
+    }
+
+    ll total_cost = 0;
+    for(int i = 0; i < m; i++)
+    {
+        total_cost += M[V2[i]];
+    }
+
+    cout << total_cost << endl;
+
+    return 0;
+}
