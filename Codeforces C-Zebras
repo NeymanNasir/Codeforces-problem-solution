@@ -1,0 +1,37 @@
+#include<iostream>
+#include<cstdio>
+using namespace std;
+
+int main()
+{
+    char sel[510][510];
+    int R, C;
+    bool flg = 1;
+    cin >> R >> C;
+    for(int i = 0; i < R; i++)
+    {
+        for(int j = 0; j < C; j++)
+        {
+            cin >> sel[i][j];
+            if(i == 0 && j >0 && ((sel[i][j] == 'S' && sel[i][j-1] == 'W')||(sel[i][j] == 'W' && sel[i][j-1] == 'S')))flg = 0;
+            else if(j == 0 && i > 0 && ((sel[i][j] == 'S' && sel[i-1][j] == 'W')||(sel[i][j] == 'W' && sel[i-1][j] == 'S'))) flg = 0;
+            else if(j > 0 && (sel[i][j] == 'S' && (sel[i][j-1] == 'W' || sel[i-1][j] == 'W'))||(sel[i][j] == 'W' && (sel[i][j-1] == 'S' || sel[i-1][j] == 'S'))) flg = 0;
+            if(sel[i][j] == '.') sel[i][j] = 'D';
+        }
+    }
+
+    if(flg == 0) cout << "No" << endl;
+    else
+    {
+        cout << "Yes" << endl;
+        for(int i = 0; i < R; i++)
+        {
+            for(int j = 0; j < C; j++)
+            {
+                cout << sel[i][j];
+            }
+            cout << endl;
+        }
+    }
+    return 0;
+}
